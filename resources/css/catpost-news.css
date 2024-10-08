@@ -1,0 +1,59 @@
+/* CATEGORY POST NEWS */
+.category-post-news-item {
+    height: 300px; /* Fixed height for each category item */
+    width: 100%; /* Full width of the parent container */
+    position: relative;
+}
+
+.category-post-news-item img {
+    height: 100%; /* Fill the entire height of the container */
+    width: 100%; /* Fill the entire width of the container */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.category-post-news-item .overlay {
+    background-color: rgba(0, 0, 0, 0.6); /* Darkened overlay */
+    padding: 15px;
+    height: 100%; /* Overlay covers the entire container */
+    width: 100%; /* Overlay covers the entire container */
+    position: absolute; /* Overlay positioned absolutely */
+    top: 0;
+    left: 0;
+}
+
+.category-post-news-item .h4 {
+    font-size: 1.25rem; /* Font size for headlines */
+    margin: 10px 0; /* Space around the headline */
+}
+
+.category-post-news-item .category-post-news-headline {
+    color: #ffffff; /* Headline text color */
+}
+
+.category-post-news-item .category-post-news-headline:hover {
+    color: #ddd; /* Slight color change on hover */
+}
+
+.category-post-news-item .mb-2 {
+    font-size: 13px;
+    color: #ffffff; /* Light text color */
+}
+
+.category-post-news-item .categoy-categoryname {
+    color: #ffffff; /* Light category name */
+    text-decoration: underline;
+}
+
+/* Ensuring uniformity */
+.owl-carousel .owl-item {
+    display: flex;
+    justify-content: center;
+}
+
+.owl-carousel .category-post-news-item {
+    margin: 0 10px;
+}
+
+.owl-carousel .owl-item.active {
+    display: flex;
+}

@@ -1,0 +1,572 @@
+.h2-headline{
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+
+       /* BACK TO TOP */
+
+       #backToTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        margin-bottom: 20px;
+        color: red;
+        border: 2px solid #FFFFFF;
+        height: 45px;
+        border-radius: 50px;
+        padding: 4px;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 9999;
+        animation: bounceColor 5s infinite alternate, blinkColor 2s infinite alternate;
+    }
+    
+
+    /* .owl-item.cloned.active {
+        visibility: hidden;
+      } */
+
+    
+    @keyframes bounceColor {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+            transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        40% {
+            transform: translateY(-15px);
+            transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        60% {
+            transform: translateY(-7.5px);
+            transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+    }
+    
+    @keyframes blinkColor {
+        0% {
+            background-color: red;
+            color: blue;
+        }
+        50% {
+            background-color: red;
+            color: black;
+        }
+        100% {
+            background-color: red;
+            color: white;
+        }
+    }
+
+
+
+    .navbar-toggler {
+        border-color: red !important;
+    }
+    
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 0, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+    
+
+ 
+    .owl-prev, .owl-next {
+        /* position: absolute!important; */
+        top: 60% !important;
+        transform: translateY(-50%) !important;
+        background-color: rgba(237, 233, 233, 0.941) !important;
+        color: rgba(255, 255, 255, 0.839) !important;
+        border: 2px solid white !important;
+        padding: 10px !important;
+        font-size: 30px !important;
+        cursor: pointer !important;
+        z-index: 1000 !important;
+    }
+
+    .owl-prev {
+        left: -45px !important;
+    }
+
+    .owl-next {
+        right: -25px !important;
+    }
+
+    .owl-prev:hover, .owl-next:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+
+.tranding-carousel-container .carousel-item {
+    width: 100%;
+    white-space: nowrap; /* Prevents wrapping of text */
+}
+.tranding-carousel-container .carousel-item a {
+    display: inline-block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-right: 20px; /* Adjust as needed */
+}
+
+
+
+.span-slash{
+    color: rgb(255, 0, 0)!important; 
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+.category-headline{
+    color: rgb(255, 0, 0)!important; 
+    font-weight: bolder !important;
+    font-size: 14px !important; 
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+   
+}
+
+.allnews-headline{
+    font-weight: bolder !important;
+    font-size: 14\px !important; 
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    color:rgb(178, 34, 34)!important; 
+}
+
+.breadcrumb-item {
+    font-weight: bolder !important;
+    font-size: 16px !important; 
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    color:rgb(178, 34, 34)!important; 
+}
+
+.search-readmore-button{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #FFFFFF;
+    /* position: absolute; */
+    bottom: -3rem;
+    left: 0;
+    /* width: 100%; */
+    text-align: center;
+    padding: .65rem;
+    box-shadow: inset 1px 1px rgba(0, 0, 0, 0.1), inset -1px -1px rgba(0, 0, 0, 0.1) !important;
+    /* height: 60px; */
+    background-color: rgb(220, 20, 60)!important; 
+}
+
+.readmore-headline{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+.feature-headline{
+    font-family: Georgia, 'Times New Roman', Times, serif !important; 
+    font-size: 10px !important;
+}
+
+
+.date-headline{
+    color: rgb(255, 0, 0)!important; 
+    font-weight: bolder !important;
+    font-size: 14px !important;  
+    font-family: Georgia, 'Times New Roman', Times, serif !important; 
+}
+
+.popu-lates-headline{
+    color: rgb(178, 34, 34)!important; 
+    font-weight: bolder !important;
+    font-size: 14px !important; 
+    font-family: Georgia, 'Times New Roman', Times, serif !important; 
+}
+
+.popu-lates-slash{
+    color:rgb(178, 34, 34)!important; 
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif !important; 
+}
+
+.popu-latest-date{
+    color:rgb(178, 34, 34)!important; 
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;    
+}   
+
+.small-headline:hover{
+    color:rgb(178, 34, 34)!important; 
+    font-weight: bolder !important;
+    font-family: Georgia, 'Times New Roman', Times, serif !important; 
+}
+
+
+
+
+.website-name{
+    font-size:30px !important;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+
+.h5-headline a{
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.h5-headline a:hover{
+    text-decoration: underline;
+    color: rgb(220, 20, 60)!important; 
+}
+
+
+.newsletter-signup{
+    color: white !important;
+    font-family: Georgia, 'Times New Roman', Times, serif ;
+}
+
+
+
+  
+
+    .subscriber-text {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 13px;
+    }
+
+ 
+    .subscriber-input::placeholder{
+        font-family: Georgia, 'Times New Roman', Times, serif !important;
+        font-size: 13px !important;
+    }
+
+    .newsletter-signup{
+        font-family: Georgia, 'Times New Roman', Times, serif !important;
+        font-size: 16px !important; 
+        font-weight: bold !important;
+    }
+
+
+
+
+
+
+
+.top-news-item {
+    margin-right: 10px !important; /* Space between items */
+  
+    
+}
+.top-news-headline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px; /* Adjust the font size as needed */
+    color: rgb(220, 20, 60)!important; /* Adjust the color to match your theme */
+    font-weight: 600; /* Semi-bold */
+    line-height: 1.4; /* Line height for readability */
+    text-decoration: none; /* Remove underline */
+    height: 2.8em !important; /* Fixed height to ensure two lines (line-height * 2) */
+    word-wrap: break-word; /* Ensure long words break into the next line */
+    white-space: normal; /* Allow wrapping */
+}
+.top-news-headline:hover {
+    color: #0056b3 !important; /* Change color on hover */
+}
+.top-news-container {
+    padding: 10px;
+    background: #f8f9fa; /* Light background for contrast */
+    border-radius: 5px;
+    width: 300px !important;
+  
+}
+
+.top-news-title {
+    font-size: 24px; /* Larger font size for the title */
+    color: #333; /* Adjust color to match your theme */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.top-news-carousel {
+    overflow: hidden;
+    position: relative;
+    width: 105%;
+}
+
+.top-news-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 15s linear infinite;
+}
+
+.top-news-item {
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* TAGS */
+    .tag-link:hover {
+        color: rgb(220, 20, 60)!important;/* Change text color on hover */
+        color: rgb(220, 20, 60)!important; /* Change border color on hover */
+    }
+
+
+/* CATEGORY NEWS  START*/
+
+.category-post-news .card{
+    height: 320px !important;
+   }
+
+   
+   .categoy-categoryname{
+    color: rgb(220, 20, 60)!important;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-size: 14px !important;
+     font-weight: 600 !important;
+    }
+ 
+    .category-post-news span{
+        color: rgb(220, 20, 60)!important;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-size: 14px !important;
+     font-weight: 600 !important;
+    }
+ 
+    .category-post-news-headline{
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-size: 14px !important;
+     font-weight: 600 !important;
+    }
+
+
+/* ANNOUNCEMENT */
+.announcement-bar {
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.marquee {
+    display: flex;
+    gap: 50px;
+    animation: marquee 20s linear infinite;
+    align-items: center;
+}
+
+.announcement {
+    display: inline-flex;
+    align-items: center;
+}
+
+.announcement i {
+    margin-right: 10px;
+    line-height: 1;
+    color: rgb(220, 20, 60)!important;
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.announcement-content strong {
+    margin-right: 5px;
+    line-height: 1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold !important;
+    color: #333; /* Darken the strong text for better contrast */
+}
+
+.announcement-message {
+    margin: 0;
+    line-height: 1;
+    display: inline;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333; /* Darken the message text for better contrast */
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+
+ /* CATEGORY NEWS END */
+
+
+ 
+
+
+      .related-news p{
+        font-family: Georgia, 'Times New Roman', Times, serif !important;
+        font-size: 14px !important;  
+        word-spacing: 3px;
+     
+    }
+
+    .related-news .card{
+        height: 480px !important;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+
+    .related-readmore-button{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #FFFFFF;
+        /* position: absolute; */
+        bottom: -3rem;
+        left: 0;
+        /* width: 100%; */
+        text-align: center;
+        padding: .65rem;
+        box-shadow: inset 1px 1px rgba(0, 0, 0, 0.1), inset -1px -1px rgba(0, 0, 0, 0.1) !important;
+        /* height: 60px; */
+        background-color: rgb(220, 20, 60)!important;
+       }
+
+
+/* COOKIE CONSENT */
+    .cookie-consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: 1200px; /* Limit the width to avoid stretching on larger screens */
+        margin: 0 auto; /* Center align the banner */
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 15px;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .cookie-consent-banner p {
+        margin: 0;
+        font-size: 14px; /* Smaller font size for a more compact look */
+    }
+
+    .cookie-consent-banner a {
+        color: rgb(220, 20, 60)!important; /* Adjusted color for contrast */
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    #accept-cookies, #reject-cookies {
+        padding: 5px 10px; /* Smaller padding to reduce button size */
+        font-size: 14px;
+    }
+
+    #cancel-cookies {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        .cookie-consent-banner {
+            padding: 15px; /* Increase padding for mobile view */
+            max-width: 100%; /* Ensure the banner fits within mobile screens */
+        }
+
+        .cookie-consent-banner p {
+            margin-bottom: 10px;
+            font-size: 12px; /* Further reduce font size for mobile */
+        }
+
+        .cookie-consent-banner .col-md-3,
+        .cookie-consent-banner .col-4 {
+            justify-content: flex-start !important;
+        }
+    }
+/* Latest news */
+
+    .trending-top-headline{
+        color: rgb(220, 20, 60)!important;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+       }
+
+       .trending-small-headline{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: rgb(220, 20, 60)!important;
+       }
+
+
+    
+    
+  
+
+   /* POPULAR,LATEST,TRENDING START*/
+.popular-small-headline{
+    color: white !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+   }
+
+ 
+   .popular-latest a{
+    color: rgb(220, 20, 60)!important; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+   }
+
+   .popular-latest  span{
+    color: rgb(220, 20, 60)!important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+   }
+
+   .popular-latest-headline{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+   }
+
+   .popular-latest-post{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+   }
+
+.seach-result .card{
+    height: 450px;
+ 
+}
+
+.seach-result h5 a:hover{
+    text-decoration: underline;
+}
+
+.seach-result p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;  
+    word-spacing: 3px;
+ 
+}

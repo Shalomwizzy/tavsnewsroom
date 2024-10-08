@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /reject-cookies
+Disallow: /accept-cookies
+Disallow: /admin

@@ -1,0 +1,49 @@
+/* TRENDING NEWS SECTION */
+
+.trending-news-heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color:  #6C7293 !important;
+   
+    text-align: center; /* Align heading to the center */
+}
+
+.trending-news{
+    background-color: black !important; /* White background */
+    padding: 20px; /* Padding around the cards */
+}
+
+.trending-news .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    background-color: #0000 !important;
+    height: 100%; /* Ensure cards take full height of parent */
+}
+
+.trending-news .card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trending-news .card-body {
+    padding: 15px;
+    height: 100%; /* Ensure card body takes full height */
+    display: flex;
+    /* font-size: 5px !important; */
+    color:  #6C7293 !important;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    flex-direction: column;
+}
+
+.trending-news .card-text {
+    font-size: 14px;
+    color:  #6C7293 !important;
+    margin-bottom: 10px;
+}
+
+.trending-news-h5{
+    font-size: 14px;
+    color:  #6C7293 !important;
+    margin-bottom: 10px; 
+}
