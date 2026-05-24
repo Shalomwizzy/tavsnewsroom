@@ -1,35 +1,63 @@
 /* CAROUSEL SECTION */
 
-/* Swiper nav — compact red pill arrows */
-:root {
-    --swiper-theme-color: #DC143C;
-    --swiper-navigation-size: 12px;
-}
+/* ── Swiper nav arrows — premium solid ─────────────────────────────── */
+:root { --swiper-theme-color: #DC143C; }
 
-.swiper-button-prev,
-.swiper-button-next {
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.5) !important;
-    color: #DC143C !important;
+.swiper-button-prev.cs-arrow,
+.swiper-button-next.cs-arrow {
+    /* reset swiper defaults */
+    width: 34px !important;
+    height: 34px !important;
+    margin-top: 0;
     top: 50%;
     transform: translateY(-50%);
-    transition: background 0.2s, color 0.2s;
-}
-.swiper-button-prev { left: 8px !important; }
-.swiper-button-next { right: 8px !important; }
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    background: #DC143C !important;
-    color: #fff !important;
+    /* solid red circle */
+    background: #DC143C;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #fff;
+
+    /* premium shadow */
+    box-shadow: 0 2px 10px rgba(220,20,60,0.45), 0 1px 3px rgba(0,0,0,0.3);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    z-index: 10;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-    font-size: 11px !important;
-    font-weight: 900;
+.swiper-button-prev.cs-arrow { left: 10px !important; }
+.swiper-button-next.cs-arrow { right: 10px !important; }
+
+/* hide swiper's own ::after chevron */
+.swiper-button-prev.cs-arrow::after,
+.swiper-button-next.cs-arrow::after { display: none; }
+
+/* SVG icon */
+.cs-arrow svg {
+    width: 14px;
+    height: 14px;
+    stroke: #fff;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* hover — lift + deeper glow */
+.cs-arrow:hover {
+    background: #b50f2f;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 4px 16px rgba(220,20,60,0.6), 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* press */
+.cs-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 1px 6px rgba(220,20,60,0.4);
 }
 
 .carousel-news-heading {
