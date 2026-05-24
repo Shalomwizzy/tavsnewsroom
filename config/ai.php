@@ -3,14 +3,14 @@
 return [
 
     'gemini' => [
-        'api_key'      => env('GEMINI_API_KEY'),
-        'model'        => 'gemini-2.0-flash',
-        'base_url'     => 'https://generativelanguage.googleapis.com/v1beta/models',
+        'api_key'  => env('GEMINI_API_KEY'),
+        'model'    => env('GEMINI_MODEL', 'gemini-2.0-flash'),
+        'base_url' => 'https://generativelanguage.googleapis.com/v1beta/models',
     ],
 
     'groq' => [
         'api_key'  => env('GROQ_API_KEY'),
-        'model'    => 'llama-3.3-70b-versatile',
+        'model'    => env('GROQ_MODEL', 'llama-3.3-70b-versatile'),
         'base_url' => 'https://api.groq.com/openai/v1',
     ],
 
