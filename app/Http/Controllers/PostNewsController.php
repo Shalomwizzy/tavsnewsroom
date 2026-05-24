@@ -14,6 +14,8 @@ use App\Http\Requests\StorePostNewsRequest;
 use App\Http\Requests\UpdatePostNewsRequest;
 use Illuminate\Support\Str;
 use App\Http\Controllers\SEOController;
+use App\Services\GeminiService;
+use Illuminate\Support\Facades\Cache;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\Encoders\WebpEncoder;
@@ -250,15 +252,66 @@ class PostNewsController extends Controller
     $commentsEnabled = (bool) WebsiteSetting::getValue('comments_enabled', '1');
     $comments = $post->comments()->approved()->latest()->get();
 
-    // Related: same category first (newest), fill to 3 with most-viewed from other categories
-    $relatedNews = PostNews::withCount('postViews')
-        ->where('id', '!=', $post->id)
-        ->where('status', 'published')
-        ->orderByRaw('CASE WHEN category_id = ? THEN 0 ELSE 1 END', [$post->category_id])
-        ->orderByDesc('date')
-        ->orderByDesc('post_views_count')
-        ->limit(3)
-        ->get();
+    // Related articles — semantic search via Gemini keyword expansion, cached 48h per article
+    $relatedNews = Cache::remember("related_articles_{$post->id}", now()->addHours(48), function () use ($post) {
+        try {
+            $gemini = app(GeminiService::class);
+
+            // Build a rich search seed from the article's own metadata
+            $seed = trim($post->headline . ' ' . ($post->meta_keywords ?? ''));
+            $terms = $gemini->expandSearchQuery($seed);
+
+            // Search other published articles for any of those terms
+            $candidates = PostNews::withCount('postViews')
+                ->where('id', '!=', $post->id)
+                ->where('status', 'published')
+                ->where(function ($q) use ($terms) {
+                    foreach ($terms as $term) {
+                        $t = addslashes($term);
+                        $q->orWhere('headline',        'LIKE', "%{$t}%")
+                          ->orWhere('meta_keywords',   'LIKE', "%{$t}%")
+                          ->orWhere('meta_description','LIKE', "%{$t}%");
+                    }
+                })
+                ->latest()
+                ->limit(12)
+                ->get();
+
+            // Score: same-category bonus (3pts) + normalised view count (up to 2pts) + recency (up to 1pt)
+            $maxViews = $candidates->max('post_views_count') ?: 1;
+            $scored = $candidates->map(function ($art) use ($post, $maxViews) {
+                $score  = ($art->category_id === $post->category_id) ? 3 : 0;
+                $score += round(($art->post_views_count / $maxViews) * 2, 2);
+                $score += $art->date >= now()->subDays(30)->toDateString() ? 1 : 0;
+                $art->_score = $score;
+                return $art;
+            })->sortByDesc('_score')->take(3);
+
+            // Fallback: if semantic search returned fewer than 3, pad with category matches
+            if ($scored->count() < 3) {
+                $excludeIds = $scored->pluck('id')->push($post->id)->all();
+                $fallback = PostNews::withCount('postViews')
+                    ->where('status', 'published')
+                    ->where('category_id', $post->category_id)
+                    ->whereNotIn('id', $excludeIds)
+                    ->orderByDesc('post_views_count')
+                    ->limit(3 - $scored->count())
+                    ->get();
+                $scored = $scored->concat($fallback);
+            }
+
+            return $scored->values();
+        } catch (\Throwable) {
+            // Fallback to category-based if Gemini fails
+            return PostNews::withCount('postViews')
+                ->where('id', '!=', $post->id)
+                ->where('status', 'published')
+                ->where('category_id', $post->category_id)
+                ->orderByDesc('post_views_count')
+                ->limit(3)
+                ->get();
+        }
+    });
 
     return view('post-news.read-more', compact(
         'post', 'socialFollows', 'trendingNews', 'tags', 'relatedNews',

@@ -17,7 +17,7 @@ class PostNews extends Model
         'headline', 'slug', 'category_id', 'user_id', 'date', 'image_url', 'content',
         'is_top_news', 'is_breaking', 'seo_score', 'seo_suggestions', 'meta_title',
         'meta_description', 'meta_keywords', 'status', 'scheduled_for',
-        'reading_time', 'ai_generated', 'humanness_score',
+        'reading_time', 'ai_generated', 'humanness_score', 'ai_summary',
     ];
 
     protected $casts = [
@@ -156,16 +156,28 @@ protected static function booted(): void
         $post->reading_time = max(1, (int) ceil(
             str_word_count(strip_tags($post->content ?? '')) / 200
         ));
+
+        // Auto-generate summary when a post is published and has no summary yet
+        if ($post->status === 'published' && empty($post->ai_summary) && !empty($post->content)) {
+            try {
+                $post->ai_summary = app(\App\Services\GeminiService::class)
+                    ->generateSummary($post->headline ?? '', $post->content);
+            } catch (\Throwable) {
+                // Non-fatal — summary stays empty
+            }
+        }
     });
 
-    static::saved(function () use ($clearCache) {
+    static::saved(function (PostNews $post) use ($clearCache) {
         RegenerateSitemapJob::dispatch();
         $clearCache();
+        Cache::forget("related_articles_{$post->id}");
     });
 
-    static::deleted(function () use ($clearCache) {
+    static::deleted(function (PostNews $post) use ($clearCache) {
         RegenerateSitemapJob::dispatch();
         $clearCache();
+        Cache::forget("related_articles_{$post->id}");
     });
 }
 

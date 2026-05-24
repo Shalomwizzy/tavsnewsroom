@@ -91,13 +91,24 @@
                                 <i class="fa fa-eye"></i> {{ number_format($post->post_views_count) }} views
                             </span>
                         </p>
-                        <img 
-                            src="{{ asset($post->image_url) }}" 
-                            alt="{{ $post->headline }}" 
-                            class="img-fluid mb-3" 
-                            loading="lazy" 
+                        <img
+                            src="{{ asset($post->image_url) }}"
+                            alt="{{ $post->headline }}"
+                            class="img-fluid mb-3"
+                            loading="lazy"
                             fetchpriority="high"
                             sizes="(max-width: 768px) 100vw, 50vw"                        >
+
+                        @if (!empty($post->ai_summary))
+                        <div class="ai-summary-box">
+                            <div class="ai-summary-label">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+                                Quick Summary
+                            </div>
+                            <p class="ai-summary-text">{{ $post->ai_summary }}</p>
+                        </div>
+                        @endif
+
                         <p class="card-text">{!! $post->content !!}</p>
 
                    <!-- Bookmark Button Start -->

@@ -144,7 +144,15 @@ class AIBlogService
                 $resolvedCategoryId = $cat?->id;
             }
 
-            // 8. Publish to post_news
+            // 8. Generate TL;DR summary
+            $log->update(['status' => 'generating_summary']);
+            try {
+                $summary = $this->gemini->generateSummary($headline, $article);
+            } catch (\Throwable) {
+                $summary = '';
+            }
+
+            // 9. Publish to post_news
             $log->update(['status' => 'saving']);
 
             $autoPublish = config('ai.blog.auto_publish', true);
@@ -165,6 +173,7 @@ class AIBlogService
                 'reading_time'     => max(1, (int) ceil($wordCount / 200)),
                 'ai_generated'     => true,
                 'humanness_score'  => $score,
+                'ai_summary'       => $summary,
             ]);
 
             $log->update([

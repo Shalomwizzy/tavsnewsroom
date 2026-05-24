@@ -171,6 +171,36 @@ PROMPT;
     }
 
     /**
+     * Generate a 2-3 sentence TL;DR summary for an article.
+     */
+    public function generateSummary(string $headline, string $content): string
+    {
+        $excerpt = Str::limit(strip_tags(html_entity_decode($content)), 2000);
+
+        $prompt = <<<PROMPT
+Write a 2-3 sentence TL;DR summary of this news article. It should tell a reader exactly what happened and why it matters, so they can decide in seconds whether to read the full piece.
+
+Rules:
+- Maximum 3 sentences, minimum 2
+- Plain prose only — no bullet points, no bold text, no dashes as punctuation
+- Active voice, present or past tense as appropriate
+- Do not start with "This article", "In this piece", or "The author"
+- Do not use phrases like "TL;DR:", "Summary:", "In summary"
+- Just write the summary directly, as if a sharp editor distilled the story in one breath
+
+Article headline: {$headline}
+Article content: {$excerpt}
+
+Return only the summary text. Nothing else.
+PROMPT;
+
+        $result = trim($this->call($prompt, 0.3));
+        // Strip any accidental leading labels
+        $result = preg_replace('/^(tl;?dr:?|summary:?)\s*/i', '', $result);
+        return $result;
+    }
+
+    /**
      * Suggest category, tags, meta title and meta description for a given article.
      */
     public function suggestTagsAndCategory(string $headline, string $content, array $categories): array
