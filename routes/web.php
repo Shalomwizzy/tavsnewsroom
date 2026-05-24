@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AIBlogController;
 use App\Http\Controllers\PwaController;
 use App\Http\Controllers\TrendingNewsController;
 use App\Http\Controllers\CategoryController;
@@ -222,6 +223,10 @@ Route::middleware(['auth', 'role.admin.writer', 'cors', 'writer.permission'])->g
  Route::post('/admin/clear-caches', [AdminController::class, 'clearCaches'])->name('admin.clear.caches');
  Route::get('/admin/clear-cache', [AdminController::class, 'showClearCachePage'])->name('admin.show.clear.cache');
  Route::get('/admin/top-articles', [AdminController::class, 'topArticles'])->name('admin.top-articles');
+
+ // AI Blog Generator
+ Route::get('/admin/ai-blog', [AIBlogController::class, 'index'])->name('admin.ai-blog.index');
+ Route::post('/admin/ai-blog/generate', [AIBlogController::class, 'generate'])->name('admin.ai-blog.generate');
 
 
 

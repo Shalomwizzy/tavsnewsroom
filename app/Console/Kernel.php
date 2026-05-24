@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Commands\PublishScheduledPosts;
 use App\Console\Commands\GenerateSitemap;
+use App\Jobs\GenerateAIBlogPostJob;
 
 class Kernel extends ConsoleKernel
 {
@@ -29,6 +30,9 @@ class Kernel extends ConsoleKernel
         // Schedule the sitemap to be generated every day at midnight
         // $schedule->command('app:generate-sitemap')->daily();
         $schedule->command('app:generate-sitemap')->everyMinute();
+
+        // AI Blog: auto-generate a new article every 6 hours
+        $schedule->job(new GenerateAIBlogPostJob())->everySixHours();
 
     }
 

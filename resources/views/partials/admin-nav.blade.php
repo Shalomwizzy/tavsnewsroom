@@ -149,6 +149,17 @@
                 </div>
                 @endif
 
+                @if($authUser->isAdmin())
+                <div>
+                    <span class="nav-link admin-span">AI TOOLS</span>
+                    <div class="nav-item">
+                        <a href="{{ route('admin.ai-blog.index') }}" class="nav-link {{ request()->routeIs('admin.ai-blog.*') ? 'active' : '' }}">
+                            <i class="fa-solid fa-bolt home-fixtures"></i>AI Blog Generator
+                        </a>
+                    </div>
+                </div>
+                @endif
+
                 @if($authUser->isAdmin() || $hasAccess('analytics') || $hasAccess('comments'))
                 <div>
                     <span class="nav-link admin-span">ANALYTICS</span>

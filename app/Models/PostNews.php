@@ -17,12 +17,14 @@ class PostNews extends Model
         'headline', 'slug', 'category_id', 'user_id', 'date', 'image_url', 'content',
         'is_top_news', 'is_breaking', 'seo_score', 'seo_suggestions', 'meta_title',
         'meta_description', 'meta_keywords', 'status', 'scheduled_for',
-        'reading_time',
+        'reading_time', 'ai_generated', 'humanness_score',
     ];
 
     protected $casts = [
-        'is_breaking' => 'boolean',
-        'is_top_news' => 'boolean',
+        'is_breaking'     => 'boolean',
+        'is_top_news'     => 'boolean',
+        'ai_generated'    => 'boolean',
+        'humanness_score' => 'integer',
     ];
 
     public function category()
