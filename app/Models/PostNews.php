@@ -9,7 +9,6 @@ use Illuminate\Support\Carbon;
 use App\Jobs\RegenerateSitemapJob;
 use App\Jobs\SendPushNotificationJob;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Carbon;
 
 class PostNews extends Model
 {
