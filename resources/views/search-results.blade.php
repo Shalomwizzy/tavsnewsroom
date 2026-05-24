@@ -21,6 +21,17 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h2 class="h2-headline">Search Results for "{{ $query }}"</h2>
+
+                                        @if (!empty($expandedTerms))
+                                        <p class="search-smart-label">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                                            Smart search also looked for:
+                                            @foreach ($expandedTerms as $term)
+                                                <span class="search-smart-chip">{{ $term }}</span>
+                                            @endforeach
+                                        </p>
+                                        @endif
+
                                         @if ($searchResults->isEmpty())
                                         <p class="h2-headline">No results found.</p>
                                     @else

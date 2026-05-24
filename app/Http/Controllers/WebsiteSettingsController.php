@@ -23,10 +23,12 @@ class WebsiteSettingsController extends Controller
         $gaPropertyId          = WebsiteSetting::getValue('ga_property_id', '');
         $commentsEnabled       = (bool) WebsiteSetting::getValue('comments_enabled', '1');
         $robotsTxt             = WebsiteSetting::getValue('robots_txt', "User-agent: *\nDisallow: /reject-cookies\nDisallow: /accept-cookies\nDisallow: /admin");
+        $aiChatName            = WebsiteSetting::getValue('ai_chat_name', 'Ask Tavs');
 
         return view('admin.website-settings.index', compact(
             'siteName', 'siteEmail', 'sitePhone', 'siteCopyright', 'siteLogoUrl',
-            'siteDefaultMetaDesc', 'gaTrackingId', 'gaPropertyId', 'commentsEnabled', 'robotsTxt'
+            'siteDefaultMetaDesc', 'gaTrackingId', 'gaPropertyId', 'commentsEnabled', 'robotsTxt',
+            'aiChatName'
         ));
     }
 
@@ -52,6 +54,7 @@ class WebsiteSettingsController extends Controller
         WebsiteSetting::setValue('ga_property_id', $request->ga_property_id ?? '');
         WebsiteSetting::setValue('comments_enabled', $request->has('comments_enabled') ? '1' : '0');
         WebsiteSetting::setValue('robots_txt', $request->input('robots_txt', ''));
+        WebsiteSetting::setValue('ai_chat_name', $request->input('ai_chat_name', 'Ask Tavs'));
     
         if ($request->hasFile('site_logo')) {
             $imageFile = $request->file('site_logo');

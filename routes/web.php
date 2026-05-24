@@ -227,6 +227,7 @@ Route::middleware(['auth', 'role.admin.writer', 'cors', 'writer.permission'])->g
  // AI Blog Generator
  Route::get('/admin/ai-blog', [AIBlogController::class, 'index'])->name('admin.ai-blog.index');
  Route::post('/admin/ai-blog/generate', [AIBlogController::class, 'generate'])->name('admin.ai-blog.generate');
+ Route::post('/admin/ai-suggest', [\App\Http\Controllers\AiSuggestController::class, 'suggest'])->name('admin.ai-suggest');
 
 
 
@@ -444,6 +445,9 @@ Route::get('/robots.txt', function () {
 // BOOKMARK ROUTES (auth required — handled in controller constructor)
 Route::post('/bookmarks/{postNews}/toggle', [BookmarkController::class, 'toggle'])->name('bookmarks.toggle');
 Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
+
+// AI CHATBOT
+Route::post('/ai-chat', [\App\Http\Controllers\AiChatController::class, 'chat'])->name('ai.chat');
 
 // COMMENT ROUTES
 Route::post('/post-news/{postNews}/comments', [CommentController::class, 'store'])->name('comments.store');

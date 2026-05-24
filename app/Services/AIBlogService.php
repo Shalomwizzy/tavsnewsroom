@@ -17,7 +17,7 @@ class AIBlogService
     ) {}
 
     /**
-     * Full pipeline: topic → draft → humanize → image → publish.
+     * Full pipeline: topic → draft → word-count check → humanize → image → meta → publish.
      * Returns the AiBlogLog record.
      */
     public function generate(?int $categoryId = null): AiBlogLog
@@ -26,11 +26,10 @@ class AIBlogService
 
         try {
             // 1. Gather context
-            $categories       = Category::all(['id', 'name'])->toArray();
-            $categoryNames    = array_column($categories, 'name');
-            $existingHeadlines = PostNews::latest()->limit(40)->pluck('headline')->toArray();
+            $categories        = Category::all(['id', 'name'])->toArray();
+            $categoryNames     = array_column($categories, 'name');
+            $existingHeadlines = PostNews::latest()->limit(60)->pluck('headline')->toArray();
 
-            // Filter to requested category if specified
             if ($categoryId) {
                 $categories    = array_filter($categories, fn($c) => $c['id'] === $categoryId);
                 $categoryNames = array_column($categories, 'name');
@@ -49,17 +48,32 @@ class AIBlogService
                 'headline' => $topic['suggested_headline'] ?? '',
             ]);
 
-            // 3. Groq writes the first draft
+            // 3. Groq writes the first draft — retry until word count is met
             $log->update(['status' => 'writing']);
-            $article = $this->groq->writeArticle(
-                $topic['topic'],
-                $topic['suggested_headline'] ?? $topic['topic'],
-                $topic['seo_keywords'] ?? [],
-            );
+            $minWords    = config('ai.blog.min_words', 700);
+            $maxWriteAttempts = 3;
+            $article     = '';
 
-            $article = $this->sanitizeDashes($article);
+            for ($w = 1; $w <= $maxWriteAttempts; $w++) {
+                $article   = $this->groq->writeArticle(
+                    $topic['topic'],
+                    $topic['suggested_headline'] ?? $topic['topic'],
+                    $topic['seo_keywords'] ?? [],
+                );
+                $article   = $this->sanitizeDashes($article);
+                $wordCount = str_word_count(strip_tags($article));
 
-            // 4. Gemini checks humanness — loop until ≥ 90 or max attempts
+                if ($wordCount >= $minWords) break;
+
+                Log::warning("AI article too short on attempt {$w}", ['words' => $wordCount, 'min' => $minWords]);
+
+                if ($w < $maxWriteAttempts) {
+                    // Give Groq a stronger nudge on retry
+                    $topic['topic'] .= " — write at least {$minWords} words, this draft was only {$wordCount} words.";
+                }
+            }
+
+            // 4. Gemini humanness check — loop until ≥ 90 or max attempts
             $minScore = config('ai.blog.min_humanness', 90);
             $maxLoops = config('ai.blog.max_rewrite_loops', 3);
             $score    = 0;
@@ -73,7 +87,8 @@ class AIBlogService
 
                 if ($score >= $minScore) break;
 
-                // Groq rewrites the flagged parts
+                Log::info("Humanness {$score}% on attempt {$attempt}, rewriting...");
+
                 if ($attempt < $maxLoops) {
                     $article = $this->groq->humanizeArticle(
                         $article,
@@ -81,10 +96,13 @@ class AIBlogService
                         $check['structural_issues'] ?? [],
                     );
                     $article = $this->sanitizeDashes($article);
+
+                    // Re-check word count after rewrite
+                    $wordCount = str_word_count(strip_tags($article));
                 }
             }
 
-            // 5. Gemini generates final meta
+            // 5. Gemini generates final SEO meta
             $log->update(['status' => 'generating_meta']);
             $meta = $this->gemini->generateMeta(
                 $article,
@@ -94,19 +112,29 @@ class AIBlogService
 
             $headline = $this->sanitizeDashes($meta['headline'] ?? $topic['suggested_headline'] ?? $topic['topic']);
 
-            // 6. Pexels fetches the image
+            // 6. Get a precise Pexels image query for this specific article
             $log->update(['status' => 'fetching_image']);
-            $imageQuery = $topic['image_search_query'] ?? $topic['topic'];
-            $imagePath  = $this->pexels->fetchAndStore($imageQuery);
 
-            if (!$imagePath) {
-                // Fallback: try a more generic query
-                $imagePath = $this->pexels->fetchAndStore(
-                    implode(' ', array_slice($topic['seo_keywords'] ?? ['news'], 0, 2))
-                );
+            $imageQuery = $this->gemini->generateImageQuery(
+                $headline,
+                $topic['topic'],
+                $topic['category'] ?? '',
+            );
+
+            // Fall back to topic-embedded query or keywords
+            if (empty(trim($imageQuery))) {
+                $imageQuery = $topic['image_search_query'] ?? implode(' ', array_slice($topic['seo_keywords'] ?? [], 0, 3));
             }
 
-            // 7. Resolve category ID (case-insensitive, partial match fallback)
+            $imagePath = $this->pexels->fetchAndStore($imageQuery);
+
+            if (!$imagePath) {
+                // Last resort: try with just the first two keywords
+                $fallbackQuery = implode(' ', array_slice($topic['seo_keywords'] ?? ['news'], 0, 2));
+                $imagePath     = $this->pexels->fetchAndStore($fallbackQuery);
+            }
+
+            // 7. Resolve category (case-insensitive, partial match, then first)
             $resolvedCategoryId = $categoryId;
             if (!$resolvedCategoryId) {
                 $suggestedCat = $topic['category'] ?? null;
@@ -116,7 +144,7 @@ class AIBlogService
                 $resolvedCategoryId = $cat?->id;
             }
 
-            // 8. Save to post_news
+            // 8. Publish to post_news
             $log->update(['status' => 'saving']);
 
             $autoPublish = config('ai.blog.auto_publish', true);
@@ -147,11 +175,12 @@ class AIBlogService
                 'headline'        => $headline,
             ]);
 
-            Log::info('AI blog post generated', [
+            Log::info('AI blog post published', [
                 'post_id'         => $post->id,
                 'headline'        => $headline,
                 'humanness_score' => $score,
                 'word_count'      => $wordCount,
+                'image_query'     => $imageQuery,
             ]);
 
         } catch (\Throwable $e) {
@@ -165,9 +194,7 @@ class AIBlogService
     /** Replace dash-as-punctuation with a comma. Leaves compound-word hyphens intact. */
     private function sanitizeDashes(string $text): string
     {
-        // " - " → ", "
         $text = preg_replace('/\s+-\s+/', ', ', $text);
-        // em-dash / en-dash → ", "
         $text = preg_replace('/\s*[–—]\s*/', ', ', $text);
         return $text;
     }

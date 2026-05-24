@@ -94,6 +94,7 @@
         'resources/css/carousel-news.css',
         'resources/css/catpost-news.css',
         'resources/css/cookies.css',
+        'resources/css/ai-chat.css',
     ])
 </head>
 <body>
@@ -112,6 +113,8 @@
 
     @include('partials.footer')
 </div>
+
+@include('partials.ai-chat')
 
 <!-- Back to Top Button -->
 <div id="backToTopBtn" title="Go to top" aria-label="Back to top button">

@@ -10,9 +10,10 @@
        #backToTopBtn {
         display: none;
         position: fixed;
-        bottom: 20px;
-        right: 20px;
-        margin-bottom: 20px;
+        bottom: 24px;
+        left: 24px;
+        right: auto;
+        margin-bottom: 0;
         color: red;
         border: 2px solid #FFFFFF;
         height: 45px;
@@ -559,7 +560,38 @@
 
 .seach-result .card{
     height: 450px;
- 
+
+}
+
+/* Smart search expanded terms label */
+.search-smart-label {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.search-smart-chip {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(220, 20, 60, 0.08);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #DC143C;
+    font-weight: 500;
+}
+
+html[data-theme="dark"] .search-smart-label {
+    color: #aaa;
+}
+
+html[data-theme="dark"] .search-smart-chip {
+    background: rgba(220, 20, 60, 0.15);
+    border-color: rgba(220, 20, 60, 0.35);
 }
 
 .seach-result h5 a:hover{

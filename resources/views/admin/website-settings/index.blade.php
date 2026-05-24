@@ -89,6 +89,14 @@
                             <input type="text" name="ga_property_id" id="ga_property_id" class="form-control" value="{{ $gaPropertyId }}" placeholder="450095341">
                         </div>
 
+                        <hr>
+                        <h5 class="mt-3 mb-3">AI Chat Assistant</h5>
+                        <div class="form-group">
+                            <label for="ai_chat_name">Chat Assistant Name</label>
+                            <small class="form-text text-muted">The name shown on the chat bubble on every page — this is separate from your site name. E.g. "Ask Tavs", "NewsBot", "Ask Maya".</small>
+                            <input type="text" name="ai_chat_name" id="ai_chat_name" class="form-control" value="{{ $aiChatName }}" placeholder="e.g. Ask Tavs" maxlength="40">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>

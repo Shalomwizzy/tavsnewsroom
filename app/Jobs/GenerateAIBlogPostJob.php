@@ -14,7 +14,7 @@ class GenerateAIBlogPostJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public int $timeout = 300;
+    public int $timeout = 900;
     public int $tries   = 1;
 
     public function __construct(private ?int $categoryId = null) {}

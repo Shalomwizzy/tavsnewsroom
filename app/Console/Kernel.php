@@ -31,8 +31,17 @@ class Kernel extends ConsoleKernel
         // $schedule->command('app:generate-sitemap')->daily();
         $schedule->command('app:generate-sitemap')->everyMinute();
 
-        // AI Blog: auto-generate a new article every 6 hours
-        $schedule->job(new GenerateAIBlogPostJob())->everySixHours();
+        // AI Blog: 20 articles per day — 2 articles every 2 hours, 10 runs across the day
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('05:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('07:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('09:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('11:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('13:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('15:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('17:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('19:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('21:00');
+        $schedule->job(new GenerateAIBlogPostJob())->dailyAt('23:00');
 
     }
 
