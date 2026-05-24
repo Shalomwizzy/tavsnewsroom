@@ -1,0 +1,227 @@
+{
+  "resources/css/admin-style.css": {
+    "file": "assets/admin-style-DlsDaBYJ.css",
+    "name": "admin-style",
+    "names": [
+      "admin-style.css"
+    ],
+    "src": "resources/css/admin-style.css",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-x1XGuNl0.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/carousel-news.css": {
+    "file": "assets/carousel-news-BgOpvDnG.css",
+    "name": "carousel-news",
+    "names": [
+      "carousel-news.css"
+    ],
+    "src": "resources/css/carousel-news.css",
+    "isEntry": true
+  },
+  "resources/css/catpost-news.css": {
+    "file": "assets/catpost-news--Mf7sh9u.css",
+    "name": "catpost-news",
+    "names": [
+      "catpost-news.css"
+    ],
+    "src": "resources/css/catpost-news.css",
+    "isEntry": true
+  },
+  "resources/css/cookies.css": {
+    "file": "assets/cookies-DEvWUjud.css",
+    "name": "cookies",
+    "names": [
+      "cookies.css"
+    ],
+    "src": "resources/css/cookies.css",
+    "isEntry": true
+  },
+  "resources/css/dashboard.css": {
+    "file": "assets/dashboard-B290f9hH.css",
+    "name": "dashboard",
+    "names": [
+      "dashboard.css"
+    ],
+    "src": "resources/css/dashboard.css",
+    "isEntry": true
+  },
+  "resources/css/draft.css": {
+    "file": "assets/pending-news-T_czPM5H.css",
+    "name": "postnews-admin-index",
+    "names": [
+      "draft.css",
+      "pending-news.css",
+      "published-news.css",
+      "postnews-admin-index.css"
+    ],
+    "src": "resources/css/draft.css",
+    "isEntry": true
+  },
+  "resources/css/featured-news.css": {
+    "file": "assets/featured-news-bOQh5b1e.css",
+    "name": "featured-news",
+    "names": [
+      "featured-news.css"
+    ],
+    "src": "resources/css/featured-news.css",
+    "isEntry": true
+  },
+  "resources/css/footer.css": {
+    "file": "assets/footer-CO6bpHKw.css",
+    "name": "footer",
+    "names": [
+      "footer.css"
+    ],
+    "src": "resources/css/footer.css",
+    "isEntry": true
+  },
+  "resources/css/pending-news.css": {
+    "file": "assets/pending-news-T_czPM5H.css",
+    "name": "postnews-admin-index",
+    "names": [
+      "draft.css",
+      "pending-news.css",
+      "published-news.css",
+      "postnews-admin-index.css"
+    ],
+    "src": "resources/css/draft.css",
+    "isEntry": true
+  },
+  "resources/css/popular-news.css": {
+    "file": "assets/popular-news-CLpDNFiI.css",
+    "name": "popular-news",
+    "names": [
+      "popular-news.css"
+    ],
+    "src": "resources/css/popular-news.css",
+    "isEntry": true
+  },
+  "resources/css/postnews-admin-index.css": {
+    "file": "assets/pending-news-T_czPM5H.css",
+    "name": "postnews-admin-index",
+    "names": [
+      "draft.css",
+      "pending-news.css",
+      "published-news.css",
+      "postnews-admin-index.css"
+    ],
+    "src": "resources/css/draft.css",
+    "isEntry": true
+  },
+  "resources/css/published-news.css": {
+    "file": "assets/pending-news-T_czPM5H.css",
+    "name": "postnews-admin-index",
+    "names": [
+      "draft.css",
+      "pending-news.css",
+      "published-news.css",
+      "postnews-admin-index.css"
+    ],
+    "src": "resources/css/draft.css",
+    "isEntry": true
+  },
+  "resources/css/share-interation.css": {
+    "file": "assets/share-interation-BeTE7B-Z.css",
+    "name": "share-interation",
+    "names": [
+      "share-interation.css"
+    ],
+    "src": "resources/css/share-interation.css",
+    "isEntry": true
+  },
+  "resources/css/style.css": {
+    "file": "assets/style-CjeORnXO.css",
+    "name": "style",
+    "names": [
+      "style.css"
+    ],
+    "src": "resources/css/style.css",
+    "isEntry": true
+  },
+  "resources/css/top-news.css": {
+    "file": "assets/top-news-BJnInwAG.css",
+    "name": "top-news",
+    "names": [
+      "top-news.css"
+    ],
+    "src": "resources/css/top-news.css",
+    "isEntry": true
+  },
+  "resources/css/trending-news.css": {
+    "file": "assets/trending-news-CjprDTL9.css",
+    "name": "trending-news",
+    "names": [
+      "trending-news.css"
+    ],
+    "src": "resources/css/trending-news.css",
+    "isEntry": true
+  },
+  "resources/css/user.css": {
+    "file": "assets/user-BahVcRyc.css",
+    "name": "user",
+    "names": [
+      "user.css"
+    ],
+    "src": "resources/css/user.css",
+    "isEntry": true
+  },
+  "resources/css/welcome.css": {
+    "file": "assets/welcome-DFbIt96j.css",
+    "name": "welcome",
+    "names": [
+      "welcome.css"
+    ],
+    "src": "resources/css/welcome.css",
+    "isEntry": true
+  },
+  "resources/js/admin-main.js": {
+    "file": "assets/admin-main-Djj4QpGT.js",
+    "name": "admin-main",
+    "src": "resources/js/admin-main.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-Bm7zg8fn.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/calendar.js": {
+    "file": "assets/calendar-ibEglUgL.js",
+    "name": "calendar",
+    "src": "resources/js/calendar.js",
+    "isEntry": true
+  },
+  "resources/js/main.js": {
+    "file": "assets/main-LfckbZ8V.js",
+    "name": "main",
+    "src": "resources/js/main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-BgJ4idxy.css"
+    ]
+  },
+  "resources/js/todo-list.js": {
+    "file": "assets/todo-list-CNJZ5zKG.js",
+    "name": "todo-list",
+    "src": "resources/js/todo-list.js",
+    "isEntry": true
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-CY5Uifaj.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}
