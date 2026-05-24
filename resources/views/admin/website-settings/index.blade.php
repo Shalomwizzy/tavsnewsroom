@@ -50,6 +50,11 @@
                             @if($siteLogoUrl)
                                 <img src="{{ asset($siteLogoUrl) }}" alt="Site Logo" class="mt-2" style="max-height: 100px;">
                             @endif
+                            <div class="mt-2">
+                                <a href="{{ route('logo.download') }}" class="btn btn-sm btn-outline-secondary" download>
+                                    <i class="fa fa-download me-1"></i> Download Logo (JPG ~100KB)
+                                </a>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="site_default_meta_description">Default Meta Description</label>

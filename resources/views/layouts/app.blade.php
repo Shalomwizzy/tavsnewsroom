@@ -47,6 +47,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @if(config('services.onesignal.app_id'))
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({ appId: "{{ config('services.onesignal.app_id') }}" });
+        });
+    </script>
+    @endif
+
     <!-- Favicon & PWA -->
     <link rel="icon"             type="image/svg+xml" href="{{ asset('icons/icon.svg') }}">
     <link rel="icon"             type="image/png"     href="{{ asset('icons/icon-192.png') }}" sizes="192x192">

@@ -229,6 +229,11 @@ Route::middleware(['auth', 'role.admin.writer', 'cors', 'writer.permission'])->g
  Route::post('/admin/ai-blog/generate', [AIBlogController::class, 'generate'])->name('admin.ai-blog.generate');
  Route::post('/admin/ai-suggest', [\App\Http\Controllers\AiSuggestController::class, 'suggest'])->name('admin.ai-suggest');
 
+ // Push Notifications
+ Route::get('/admin/push-notifications', [\App\Http\Controllers\PushNotificationController::class, 'index'])->name('admin.push.index');
+ Route::post('/admin/push-notifications/send', [\App\Http\Controllers\PushNotificationController::class, 'send'])->name('admin.push.send');
+ Route::post('/admin/push-notifications/send-post', [\App\Http\Controllers\PushNotificationController::class, 'sendPost'])->name('admin.push.send-post');
+
 
 
  // TODO LIST ROUTE
@@ -448,6 +453,32 @@ Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.
 
 // AI CHATBOT
 Route::post('/ai-chat', [\App\Http\Controllers\AiChatController::class, 'chat'])->name('ai.chat');
+
+// LOGO DOWNLOAD
+Route::get('/download/logo', function () {
+    $logoPath = \App\Models\WebsiteSetting::getValue('site_logo_url', '');
+    if (empty($logoPath)) {
+        // Fall back to most recent logo
+        $files = glob(public_path('uploads/logos/*.jpg'));
+        if (empty($files)) $files = glob(public_path('images/logos/*.jpg'));
+        if (empty($files)) abort(404);
+        $logoPath = str_replace(public_path() . '/', '', end($files));
+    }
+    $fullPath = public_path($logoPath);
+    if (!file_exists($fullPath)) abort(404);
+
+    // Resize + compress to ~100KB using Intervention Image
+    $manager = new \Intervention\Image\ImageManager(new \Intervention\Image\Drivers\Gd\Driver());
+    $img = $manager->read($fullPath)->scaleDown(width: 1500);
+    $encoded = $img->toJpeg(88);
+
+    $siteName = \Illuminate\Support\Str::slug(\App\Models\WebsiteSetting::getValue('site_name', 'logo'));
+    return response($encoded->toString(), 200, [
+        'Content-Type'        => 'image/jpeg',
+        'Content-Disposition' => "attachment; filename=\"{$siteName}-logo.jpg\"",
+        'Cache-Control'       => 'no-store',
+    ]);
+})->name('logo.download');
 
 // COMMENT ROUTES
 Route::post('/post-news/{postNews}/comments', [CommentController::class, 'store'])->name('comments.store');

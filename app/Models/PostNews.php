@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use App\Jobs\RegenerateSitemapJob;
+use App\Jobs\SendPushNotificationJob;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Carbon;
 
 class PostNews extends Model
 {
@@ -172,6 +174,19 @@ protected static function booted(): void
         RegenerateSitemapJob::dispatch();
         $clearCache();
         Cache::forget("related_articles_{$post->id}");
+
+        // Auto push notification when newly published
+        if ($post->status === 'published' && $post->wasChanged('status')) {
+            $date = Carbon::parse($post->date);
+            $url  = url($date->format('Y/m/d') . '/' . $post->slug);
+            SendPushNotificationJob::dispatch(
+                $post->headline,
+                $post->ai_summary ?: ($post->meta_description ?: 'Read the full story now.'),
+                $url,
+                $post->image_url ? asset($post->image_url) : '',
+                'auto',
+            )->delay(now()->addSeconds(5));
+        }
     });
 
     static::deleted(function (PostNews $post) use ($clearCache) {
