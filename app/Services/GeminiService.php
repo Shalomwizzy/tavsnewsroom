@@ -41,18 +41,11 @@ Pick ONE topic that:
 - Fits one of the available categories
 - Appeals to a broad general audience
 
-Respond with valid JSON only, no markdown:
-{
-  "topic": "clear one-sentence topic description",
-  "suggested_headline": "compelling SEO-optimised headline (max 12 words, no dashes)",
-  "category": "exact category name from the list above",
-  "seo_keywords": ["keyword1", "keyword2", "keyword3", "keyword4"],
-  "meta_description": "150-160 character meta description for Google search result",
-  "image_search_query": "3-4 word Pexels image search query"
-}
+Respond with valid JSON only. No markdown, no explanation, just the JSON object:
+{"topic":"...","suggested_headline":"...","category":"...","seo_keywords":["k1","k2","k3","k4"],"meta_description":"...","image_search_query":"..."}
 PROMPT;
 
-        $data = $this->call($prompt, 0.9, 1024);
+        $data = $this->call($prompt, 0.9);
         return $this->parseJson($data);
     }
 
@@ -82,7 +75,7 @@ Respond with valid JSON only, no markdown:
 }
 PROMPT;
 
-        $data = $this->call($prompt, 0.2, 1024);
+        $data = $this->call($prompt, 0.2);
         $result = $this->parseJson($data);
 
         return [
@@ -124,33 +117,51 @@ Respond with valid JSON only, no markdown:
 }
 PROMPT;
 
-        $data = $this->call($prompt, 0.3, 512);
+        $data = $this->call($prompt, 0.3);
         return $this->parseJson($data);
     }
 
     // ── Private helpers ───────────────────────────────────────────────
 
-    private function call(string $prompt, float $temperature = 0.7, int $maxTokens = 8192): string
+    private function call(string $prompt, float $temperature = 0.7): string
     {
-        $url = "{$this->baseUrl}/{$this->model}:generateContent?key={$this->apiKey}";
-
-        $response = Http::timeout(60)->post($url, [
+        $url     = "{$this->baseUrl}/{$this->model}:generateContent?key={$this->apiKey}";
+        $payload = [
             'contents' => [
                 ['parts' => [['text' => $prompt]]],
             ],
             'generationConfig' => [
-                'temperature'     => $temperature,
-                'maxOutputTokens' => $maxTokens,
-                'topP'            => 0.95,
+                'temperature' => $temperature,
+                'topP'        => 0.95,
             ],
-        ]);
+        ];
 
-        if (!$response->successful()) {
-            Log::error('Gemini API error', ['status' => $response->status(), 'body' => $response->body()]);
-            throw new \RuntimeException('Gemini API error: ' . $response->status());
+        $maxAttempts = 3;
+        $lastError   = null;
+
+        for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
+            $response = Http::timeout(120)->post($url, $payload);
+
+            if ($response->successful()) {
+                return $response->json('candidates.0.content.parts.0.text', '');
+            }
+
+            $status = $response->status();
+            $body   = $response->json();
+            $msg    = $body['error']['message'] ?? $response->body();
+
+            Log::warning("Gemini attempt {$attempt} failed", ['status' => $status, 'message' => $msg]);
+            $lastError = "Gemini {$status}: {$msg}";
+
+            if ($status === 429 && $attempt < $maxAttempts) {
+                sleep($attempt * 10);
+                continue;
+            }
+
+            break;
         }
 
-        return $response->json('candidates.0.content.parts.0.text', '');
+        throw new \RuntimeException($lastError ?? 'Gemini API error');
     }
 
     private function parseJson(string $raw): array

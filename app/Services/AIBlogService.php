@@ -106,11 +106,12 @@ class AIBlogService
                 );
             }
 
-            // 7. Resolve category ID
+            // 7. Resolve category ID (case-insensitive, partial match fallback)
             $resolvedCategoryId = $categoryId;
             if (!$resolvedCategoryId) {
                 $suggestedCat = $topic['category'] ?? null;
-                $cat = Category::where('name', $suggestedCat)->first()
+                $cat = Category::whereRaw('LOWER(name) = ?', [strtolower($suggestedCat ?? '')])->first()
+                    ?? Category::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($suggestedCat ?? '') . '%'])->first()
                     ?? Category::first();
                 $resolvedCategoryId = $cat?->id;
             }

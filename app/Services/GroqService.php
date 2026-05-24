@@ -54,7 +54,7 @@ Non-negotiable rules:
 Return only the article body text. Nothing else.
 USR;
 
-        return $this->chat($system, $user, 0.85, 3000);
+        return $this->chat($system, $user, 0.85);
     }
 
     /**
@@ -91,14 +91,14 @@ Original article:
 {$article}
 USR;
 
-        return $this->chat($system, $user, 0.9, 3000);
+        return $this->chat($system, $user, 0.9);
     }
 
     // ── Private helpers ───────────────────────────────────────────────
 
-    private function chat(string $system, string $user, float $temperature, int $maxTokens): string
+    private function chat(string $system, string $user, float $temperature): string
     {
-        $response = Http::timeout(90)
+        $response = Http::timeout(120)
             ->withToken($this->apiKey)
             ->post("{$this->baseUrl}/chat/completions", [
                 'model'       => $this->model,
@@ -107,7 +107,6 @@ USR;
                     ['role' => 'user',   'content' => $user],
                 ],
                 'temperature' => $temperature,
-                'max_tokens'  => $maxTokens,
             ]);
 
         if (!$response->successful()) {
