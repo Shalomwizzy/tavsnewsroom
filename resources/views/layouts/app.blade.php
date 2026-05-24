@@ -13,8 +13,7 @@
     <script>
         (function(){
             var t = localStorage.getItem('theme');
-            var dark = t ? t === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+            if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
         })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
