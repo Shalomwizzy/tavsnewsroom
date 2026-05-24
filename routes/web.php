@@ -467,13 +467,14 @@ Route::get('/download/logo', function () {
     $fullPath = public_path($logoPath);
     if (!file_exists($fullPath)) abort(404);
 
-    // Resize + compress to ~100KB using Intervention Image
-    $manager = new \Intervention\Image\ImageManager(new \Intervention\Image\Drivers\Gd\Driver());
-    $img = $manager->read($fullPath)->scaleDown(width: 1500);
-    $encoded = $img->toJpeg(88);
+    // Resize to ~100KB using Intervention Image
+    $encoded = (new \Intervention\Image\ImageManager(new \Intervention\Image\Drivers\Gd\Driver()))
+        ->decode($fullPath)
+        ->scale(width: 1700)
+        ->encode(new \Intervention\Image\Encoders\JpegEncoder(quality: 95));
 
     $siteName = \Illuminate\Support\Str::slug(\App\Models\WebsiteSetting::getValue('site_name', 'logo'));
-    return response($encoded->toString(), 200, [
+    return response((string) $encoded, 200, [
         'Content-Type'        => 'image/jpeg',
         'Content-Disposition' => "attachment; filename=\"{$siteName}-logo.jpg\"",
         'Cache-Control'       => 'no-store',
