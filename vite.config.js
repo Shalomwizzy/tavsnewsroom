@@ -29,6 +29,7 @@ export default defineConfig({
                 'resources/css/carousel-news.css',
                 'resources/css/catpost-news.css',
                 'resources/css/cookies.css',
+                'resources/css/ai-chat.css',
 
 
                 
