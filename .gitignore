@@ -24,3 +24,8 @@ yarn-error.log
 /public/images/news_images/
 /public/images/logos/
 /public/images/categories/
+/public/uploads/
+/public/profile_pictures/
+
+# Generated files
+/public/sitemap.xml
