@@ -454,6 +454,29 @@ Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.
 // AI CHATBOT
 Route::post('/ai-chat', [\App\Http\Controllers\AiChatController::class, 'chat'])->name('ai.chat');
 
+// T ICON DOWNLOAD (SVG → JPG via Imagick)
+Route::get('/download/icon', function () {
+    $svgPath  = public_path('icons/icon.svg');
+    $siteName = \Illuminate\Support\Str::slug(\App\Models\WebsiteSetting::getValue('site_name', 'tavs'));
+
+    $imagick = new \Imagick();
+    $imagick->setResolution(300, 300);
+    $imagick->setBackgroundColor(new \ImagickPixel('white'));
+    $imagick->readImageBlob(file_get_contents($svgPath));
+    $imagick->setImageFormat('jpeg');
+    $imagick->setImageCompressionQuality(95);
+    $imagick->resizeImage(2500, 2500, \Imagick::FILTER_LANCZOS, 1, true);
+    $imagick->flattenImages();
+    $blob = $imagick->getImageBlob();
+    $imagick->clear();
+
+    return response($blob, 200, [
+        'Content-Type'        => 'image/jpeg',
+        'Content-Disposition' => "attachment; filename=\"{$siteName}-icon.jpg\"",
+        'Cache-Control'       => 'no-store',
+    ]);
+})->name('icon.download');
+
 // LOGO DOWNLOAD
 Route::get('/download/logo', function () {
     $logoPath = \App\Models\WebsiteSetting::getValue('site_logo_url', '');
