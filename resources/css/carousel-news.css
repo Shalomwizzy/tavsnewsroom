@@ -1,0 +1,56 @@
+/* CAROUSEL SECTION */
+
+.carousel-news-heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #6C7293 !important;
+    text-align: center; /* Align heading to the center */
+}
+
+.carousel-news {
+    background-color: #000; /* Black background */
+    padding: 20px; /* Padding around the cards */
+}
+
+.carousel-news .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #000;
+    transition: box-shadow 0.3s;
+    height: 100%; /* Ensure cards take full height of parent */
+}
+
+.carousel-news .card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-news .card-body {
+    padding: 15px;
+    height: 100%; /* Ensure card body takes full height */
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-news .card-text {
+    font-size: 14px;
+    color: #6C7293 !important;
+    margin-bottom: 10px;
+}
+
+.carousel-news .card-img-top {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.carousel-news p {
+    font-size: 16px; /* Font size for description */
+    color: #6C7293 !important; /* Dark gray text color */
+    line-height: 1.6; /* Line height for better readability */
+    margin-bottom: 20px; /* Space below paragraphs */
+    font-style: italic;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Font family for consistency */
+}

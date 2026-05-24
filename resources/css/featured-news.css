@@ -1,0 +1,61 @@
+/* FEATURED NEWS */
+
+.featured-news-heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color:  #6C7293 !important;
+    text-align: center; /* Align heading to the center */
+}
+
+.featured-news p{
+    font-size: 16px; /* Font size for description */
+    color:  #6C7293 !important; /* Dark gray text color */
+    line-height: 1.6; /* Line height for better readability */
+    margin-bottom: 20px; /* Space below paragraphs */
+    font-style: italic;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Font family for consistency */
+}
+
+.featured-news {
+    background-color: #0000; /* White background */
+    padding: 20px; /* Padding around the cards */
+}
+
+.featured-news .card-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+/* END FEATURED NEWS */
+
+
+.featured-news-name {
+    color: rgb(220, 20, 60)!important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.featured-news span {
+    color: rgb(220, 20, 60)!important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.featured-news-date {
+    color: rgb(220, 20, 60)!important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.featured-news-headline {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+
+}

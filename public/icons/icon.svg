@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#DC143C"/>
+
+  <!--
+    Premium slab-serif T — single-letter masthead mark
+    ─────────────────────────────────────────────────
+    Stem        : 92 px wide, centred at x=256 → x=210..302
+    Crossbar    : y=84..158 (74 px tall), x=76..436 (serif-to-serif)
+    L/R serifs  : 40 px wide, extend 16 px above + 16 px below crossbar
+    Ink traps   : 12 px diagonal notch at each stem-crossbar corner
+    Base serifs : 22 px extension each side of stem, 20 px tall
+    Optical centre ≈ y=259  (sits just below geometric centre — correct)
+  -->
+
+  <!-- ── Crossbar body (full width including serif zone) ── -->
+  <rect x="76" y="84" width="360" height="74" fill="#FFFFFF"/>
+
+  <!-- ── Left crossbar serif tab (extends 16 px above + 16 px below bar) ── -->
+  <rect x="76" y="68" width="40" height="106" fill="#FFFFFF"/>
+
+  <!-- ── Right crossbar serif tab (mirror) ── -->
+  <rect x="396" y="68" width="40" height="106" fill="#FFFFFF"/>
+
+  <!--
+    ── Stem + base serifs (single polygon, clockwise) ──────────────────
+    Ink trap: instead of a sharp 90° corner where stem meets crossbar
+    bottom, a 12 px diagonal notch is cut on each side.
+
+    Points (x, y):
+      210 150  →  top-left (above ink-trap start)
+      222 158  →  ink-trap corner (crossbar-bottom level, left)
+      290 158  →  ink-trap corner (crossbar-bottom level, right)
+      302 150  →  top-right (above ink-trap end)
+      302 430  →  bottom-right of stem
+      324 430  →  right base-serif outer edge (top)
+      324 450  →  right base-serif outer edge (bottom)
+      188 450  →  left base-serif outer edge (bottom)
+      188 430  →  left base-serif outer edge (top)
+      210 430  →  back to stem bottom-left
+                   (close → up left edge to 210,150)
+  -->
+  <polygon fill="#FFFFFF" points="
+    210,150  222,158  290,158  302,150
+    302,430  324,430  324,450
+    188,450  188,430
+    210,430
+  "/>
+
+</svg>

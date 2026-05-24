@@ -1,0 +1,58 @@
+
+    .cookie-consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: 1200px; /* Limit the width to avoid stretching on larger screens */
+        margin: 0 auto; /* Center align the banner */
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 15px;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .cookie-consent-banner p {
+        margin: 0;
+        font-size: 14px; /* Smaller font size for a more compact look */
+    }
+
+    .cookie-consent-banner a {
+        color: white!important; /* Adjusted color for contrast */
+        font-weight: 600 !important;
+        text-decoration: underline;
+        background-color: rgb(193, 10, 10);
+        font-size: 14px !important;
+        font-family: Georgia, 'Times New Roman', Times, serif !important;
+    }
+
+    #accept-cookies, #reject-cookies {
+        padding: 5px 10px; /* Smaller padding to reduce button size */
+        font-size: 14px;
+    }
+
+    #cancel-cookies {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        .cookie-consent-banner {
+            padding: 15px; /* Increase padding for mobile view */
+            max-width: 100%; /* Ensure the banner fits within mobile screens */
+        }
+
+        .cookie-consent-banner p {
+            margin-bottom: 10px;
+            font-size: 12px; /* Further reduce font size for mobile */
+        }
+
+        .cookie-consent-banner .col-md-3,
+        .cookie-consent-banner .col-4 {
+            justify-content: flex-start !important;
+        }
+    }

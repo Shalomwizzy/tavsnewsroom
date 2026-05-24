@@ -1,0 +1,387 @@
+
+/* bg-dark on dashboard cards: dark in dark mode, white card in light mode */
+html[data-admin-theme="dark"] .bg-dark,
+.bg-dark {
+    background-color: #191C24 !important;
+}
+
+html[data-admin-theme="light"] .content .bg-dark {
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+}
+
+.dashboard-h6 {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.dashboad-showall{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold; 
+    color: #EB1616 !important;
+}
+
+.dashboad-showall:hover{
+    color: #921d1d !important;
+  
+}
+
+/* SEO INSIGHT START */
+
+    .seo-insight {
+        background-color: black !important;
+        padding: 50px;
+        border-radius: 10px;
+    }
+
+    .seo-insight h6{
+        color: white;
+    }
+
+    .seo-insight .bg-dark {
+        background-color: #2c2c2c !important;
+    }
+
+    .seo-insight .table {
+        background-color: #1a1a1a;
+    }
+
+  
+    .seo-insight .table td {
+        color: #6C7293;
+        background-color: #191C24 !important;
+        border-color:  #6C7293 !important;
+    }
+
+    .seo-insight .table th{
+     color: white;
+     font-size: 14px;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     font-weight: bold;
+     background-color: #191C24 !important;
+     border-color:  #6C7293 !important;
+    }
+
+    .seo-insight .table thead th {
+        background-color: #191C24 !important;
+    }
+
+    .seo-insight .table-hover tbody tr:hover {
+        background-color: #333;
+    }
+
+    .seo-insight .btn-primary {
+        background-color: red;
+        border-color: red;
+    }
+
+    .seo-insight .btn-primary:hover {
+        background-color: rgb(160, 34, 34);
+        border-color: rgb(160, 34, 34);
+    }
+
+    .seo-insight a {
+        color: white;
+    }
+
+    .seo-insight a:hover {
+        color: rgba(255, 255, 255, 0.713);
+    }
+
+
+
+    .seo-analysis-container {
+        background-color: black !important;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .seo-analysis-container h2 {
+        color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+
+    .seo-analysis-container h5 {
+        color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+
+    .seo-analysis-container .card {
+        background-color: #2c2c2c !important;
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .seo-analysis-container .card-body {
+        padding: 20px;
+    }
+
+    .seo-analysis-container .card-title {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .seo-analysis-container .card-text {
+        color: #6C7293 !important;
+    }
+
+    .seo-analysis-container .list-group-item {
+        background-color: #2c2c2c;
+        color: #6C7293;
+        border: 1px solid #444;
+    }
+
+    .seo-analysis-container .btn-primary {
+        background-color: red;
+        border-color: red;
+    }
+
+    .seo-analysis-container .btn-primary:hover {
+        background-color: rgb(173, 32, 32);
+        border-color: rgb(173, 32, 32);
+    }
+
+    .seo-analysis-container a {
+        color: white;
+    }
+
+    .seo-analysis-container a:hover {
+        color: white;
+    }
+
+/* SEO INSIGHT END*/
+
+
+
+
+
+/* MESSAGE START */
+.message-h6{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  .message-content{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  .message-created-at{
+      font-family: Georgia, 'Times New Roman', Times, serif;  
+  }
+
+  /* MESSAGE END */
+
+ /* CALENDAR START */
+#calendar .datepicker-days table thead th {
+color: #6C7293; /* Match the text color */
+background-color: #191C24 !important;
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#calendar .datepicker-days table tbody td {
+color: #6C7293; /* Match the text color */
+background-color: #191C24 !important;
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#calendar .datepicker-days table tbody td.day.active,
+#calendar .datepicker-days table tbody td.day.active:hover {
+background-color: #EB1616 !important; /* Match the active day background color */
+color: #fff; /* Ensure the text is readable */
+}
+#calendar .datepicker-days table tbody td.today {
+background-color: #6C7293; /* Match today's date background */
+color: #fff; /* Ensure the text is readable */
+}
+#calendar .datepicker-days table tbody td:hover {
+background-color: #333; /* Match hover background color */
+color: #fff; /* Ensure the text is readable */
+}
+#calendar .datepicker-days table thead th:hover {
+background-color: #333; /* Match hover background color */
+color: #fff; /* Ensure the text is readable */
+}
+#calendar {
+background-color: #191C24; /* Match the calendar background color */
+border-radius: 8px;
+padding: 20px;
+}
+ /* CALENDAR END */
+
+/* ------------------------------------------------------------------------------------------- */
+ /* TO DO LIST START */
+ .to-do-list {
+     /* Custom styles for the To-Do List */
+ }
+ 
+ .to-do-list .list-group-item {
+     background-color: #191C24;
+     color:  #6C7293;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+ }
+
+ .to-do-list .form-control {
+     background-color: #0000 !important;
+     color: #ffffff;
+ }
+
+ .todo-input {
+     background-color: #0000 !important;
+     color: #0000 !important;
+ }
+ 
+ .to-do-list .btn-danger {
+     font-size: 0.8rem; /* Adjust the size of the delete button */
+ }
+ 
+ .to-do-list .text-decoration-line-through {
+     text-decoration: line-through;
+ }
+
+/* Share interaction cards — base styles (missing entirely before) */
+.share-interactions-grid { display: flex; flex-direction: column; gap: 0; }
+.share-interaction-card { padding: 10px 0; }
+.share-interaction-title {
+    font-size: 13px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 4px;
+}
+.share-interaction-platform,
+.share-interaction-count {
+    font-size: 12px;
+    color: #6C7293;
+    margin-bottom: 2px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.share-interaction-divider {
+    border-color: #333;
+    margin: 4px 0;
+}
+
+/* ============================================================
+   DASHBOARD — LIGHT MODE OVERRIDES
+   ============================================================ */
+
+/* Card headings */
+html[data-admin-theme="light"] .dashboard-h6 {
+    color: #111827 !important;
+}
+
+html[data-admin-theme="light"] .message-h6 {
+    color: #111827 !important;
+}
+
+html[data-admin-theme="light"] .message-created-at {
+    color: #6b7280 !important;
+}
+
+html[data-admin-theme="light"] .message-content {
+    color: #374151 !important;
+}
+
+html[data-admin-theme="light"] .border-bottom {
+    border-color: #e5e7eb !important;
+}
+
+/* SEO Insight section */
+html[data-admin-theme="light"] .seo-insight {
+    background-color: #f0f2f5 !important;
+}
+
+html[data-admin-theme="light"] .seo-insight h6 {
+    color: #111827 !important;
+}
+
+html[data-admin-theme="light"] .seo-insight .table td,
+html[data-admin-theme="light"] .seo-insight .table th {
+    background-color: #ffffff !important;
+    color: #374151 !important;
+    border-color: #e5e7eb !important;
+}
+
+/* SEO analysis container */
+html[data-admin-theme="light"] .seo-analysis-container {
+    background-color: #f0f2f5 !important;
+    color: #212529 !important;
+}
+
+html[data-admin-theme="light"] .seo-analysis-container h2,
+html[data-admin-theme="light"] .seo-analysis-container h5 {
+    color: #111827 !important;
+}
+
+html[data-admin-theme="light"] .seo-analysis-container .card {
+    background-color: #ffffff !important;
+}
+
+html[data-admin-theme="light"] .seo-analysis-container .list-group-item {
+    background-color: #f9fafb !important;
+    color: #374151 !important;
+    border-color: #e5e7eb !important;
+}
+
+html[data-admin-theme="light"] .seo-analysis-container a {
+    color: #374151 !important;
+}
+
+/* Calendar */
+html[data-admin-theme="light"] #calendar {
+    background-color: #ffffff !important;
+    border: 1px solid #e5e7eb;
+}
+
+html[data-admin-theme="light"] #calendar .datepicker-days table thead th,
+html[data-admin-theme="light"] #calendar .datepicker-days table tbody td {
+    background-color: #ffffff !important;
+    color: #374151 !important;
+}
+
+html[data-admin-theme="light"] #calendar .datepicker-days table tbody td.day.active,
+html[data-admin-theme="light"] #calendar .datepicker-days table tbody td.day.active:hover {
+    background-color: #EB1616 !important;
+    color: #fff !important;
+}
+
+html[data-admin-theme="light"] #calendar .datepicker-days table tbody td.today {
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
+}
+
+html[data-admin-theme="light"] #calendar .datepicker-days table tbody td:hover,
+html[data-admin-theme="light"] #calendar .datepicker-days table thead th:hover {
+    background-color: #f3f4f6 !important;
+    color: #374151 !important;
+}
+
+/* Todo list */
+html[data-admin-theme="light"] .to-do-list .list-group-item {
+    background-color: #f9fafb !important;
+    color: #374151 !important;
+    border-color: #e5e7eb !important;
+}
+
+html[data-admin-theme="light"] .to-do-list .form-control,
+html[data-admin-theme="light"] .todo-input {
+    background-color: #f3f4f6 !important;
+    color: #212529 !important;
+    border-color: #d1d5db !important;
+}
+
+/* Share interactions */
+html[data-admin-theme="light"] .share-interaction-title {
+    color: #111827 !important;
+}
+
+html[data-admin-theme="light"] .share-interaction-platform,
+html[data-admin-theme="light"] .share-interaction-count {
+    color: #4b5563 !important;
+}
+
+html[data-admin-theme="light"] .share-interaction-divider {
+    border-color: #e5e7eb !important;
+}
+  /* TO DO LIST END */

@@ -1,0 +1,51 @@
+/* TOP NEWS */
+
+
+.top-news-admin {
+    background-color: #000; /* White background */
+    padding: 20px; /* Padding for inner content */
+    color:  #6C7293 !important;
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+
+.top-news-admin h2 {
+font-size: 24px; /* Larger font size for the heading */
+font-weight: 600; /* Bold font weight */
+margin-bottom: 30px; /* Space below the heading */
+color:  #6C7293 !important; /* Dark color for better readability */
+text-align: center; /* Align heading text to the center */
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-news-admin .card {
+    border: 1px solid #ddd; /* Gray border for cards */
+    border-radius: 8px; /* Rounded corners for cards */
+    transition: box-shadow 0.3s; /* Smooth transition for box-shadow */
+    background-color: #0000 !important;
+   
+    height: 100%; /* Ensure cards have the same height */
+}
+
+.top-news-admin .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow on hover */
+}
+
+.top-news-admin .card-title {
+    font-size: 18px; /* Font size for card titles */
+    font-weight: 600; /* Bold font weight for card titles */
+    margin-bottom: 10px; /* Space below card titles */
+    font-size: 13px;
+    color:  #6C7293 !important; /* Dark color for better readability */
+}
+
+.top-news-admin p {
+font-size: 16px; /* Font size for description */
+color:  #6C7293 !important; /* Dark gray text color */
+line-height: 1.6; /* Line height for better readability */
+margin-bottom: 20px; /* Space below paragraphs */
+font-style: italic;
+font-family: Georgia, 'Times New Roman', Times, serif; /* Font family for consistency */
+}
+
+/* END TOP NEWS */

@@ -1,0 +1,155 @@
+
+
+    .user-index .card {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.user-index .card-header {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user-index .table-dark {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.user-index .btn {
+    margin-right: 5px;
+}
+
+.user-index .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.user-index .btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.user-index .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.user-index .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+.user-index .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.user-index .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+
+
+.user-show {
+    padding: 20px;
+}
+
+.user-show .card {
+    background-color: black;
+    border: 1px solid black;
+    color:  #6C7293 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-show .card-header {
+    background-color: #343a40;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user-show .card-body {
+    padding: 20px;
+}
+
+.user-show .card-body p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.user-show .card-body img {
+    border-radius: 50%;
+    border: 2px solid #343a40;
+    margin-top: 10px;
+}
+
+.user-show .btn {
+    margin-right: 10px;
+}
+
+.user-show .btn-warning {
+    background-color: red;
+    border-color: red;
+    color: #ffffff;
+}
+
+.user-show .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #ffffff;
+}
+
+
+
+
+
+    .user-update .card {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.user-update .card-header {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user-update .form-control,
+.user-update .form-control-file {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.user-update .form-control:focus,
+.user-update .form-control-file:focus {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+.user-update .invalid-feedback {
+    color: #ff6b6b;
+}
+
+.user-update .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.user-update .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004080;
+}
+
+.user-update .img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+
