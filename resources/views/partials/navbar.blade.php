@@ -24,7 +24,6 @@
         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
             <div class="navbar-nav me-auto py-0">
                 <a href="{{ route('welcome') }}" class="nav-item nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}">Home</a>
-                <a href="{{ route('admin.dashboard') }}" class="nav-item nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}">Admin Dashboard</a>
                 <a href="{{ route('categories.show') }}" class="nav-item nav-link {{ request()->routeIs('categories.show') ? 'active' : '' }}">Categories</a>
                 <a href="{{ route('post-news.show') }}" class="nav-item nav-link {{ request()->routeIs('post-news.show') ? 'active' : '' }}">All News</a>
                 @foreach($navbarItems as $navbarItem)
