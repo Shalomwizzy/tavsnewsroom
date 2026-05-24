@@ -1,22 +1,36 @@
 /* CAROUSEL SECTION */
 
-/* Force swiper nav arrows to brand red */
-:root { --swiper-theme-color: #DC143C; }
+/* Swiper nav — compact red pill arrows */
+:root {
+    --swiper-theme-color: #DC143C;
+    --swiper-navigation-size: 12px;
+}
 
 .swiper-button-prev,
 .swiper-button-next {
-    color: #DC143C !important;
-    background: rgba(0,0,0,0.45);
+    width: 30px !important;
+    height: 30px !important;
     border-radius: 50%;
-    width: 42px !important;
-    height: 42px !important;
-    backdrop-filter: blur(4px);
-    transition: background 0.2s;
+    background: rgba(0,0,0,0.5) !important;
+    color: #DC143C !important;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background 0.2s, color 0.2s;
 }
+.swiper-button-prev { left: 8px !important; }
+.swiper-button-next { right: 8px !important; }
+
 .swiper-button-prev:hover,
-.swiper-button-next:hover { background: rgba(220,20,60,0.85); color: #fff !important; }
+.swiper-button-next:hover {
+    background: #DC143C !important;
+    color: #fff !important;
+}
+
 .swiper-button-prev::after,
-.swiper-button-next::after { font-size: 16px !important; font-weight: 900; }
+.swiper-button-next::after {
+    font-size: 11px !important;
+    font-weight: 900;
+}
 
 .carousel-news-heading {
     font-size: 24px;
