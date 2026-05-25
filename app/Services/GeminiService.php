@@ -328,7 +328,7 @@ PROMPT;
             ],
         ];
 
-        $maxAttempts = 3;
+        $maxAttempts = 4;
         $lastError   = null;
 
         for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
@@ -345,7 +345,13 @@ PROMPT;
             $lastError = "Gemini {$status}: {$msg}";
 
             if ($status === 429 && $attempt < $maxAttempts) {
-                sleep($attempt * 15);
+                // Parse "please retry in X.Xs" from the error message
+                $wait = 65;
+                if (preg_match('/retry in (\d+(?:\.\d+)?)s/i', $msg, $m)) {
+                    $wait = (int) ceil((float) $m[1]) + 5;
+                }
+                Log::info("Gemini rate-limited, waiting {$wait}s before retry {$attempt}");
+                sleep($wait);
                 continue;
             }
 
