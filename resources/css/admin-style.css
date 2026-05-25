@@ -2078,3 +2078,48 @@ html[data-admin-theme="dark"] .form-select::placeholder {
 html[data-admin-theme="dark"] .form-control::-webkit-input-placeholder { color: #b0b0b0 !important; }
 html[data-admin-theme="dark"] .form-control::-moz-placeholder          { color: #b0b0b0 !important; }
 html[data-admin-theme="dark"] .form-control:-ms-input-placeholder      { color: #b0b0b0 !important; }
+
+/* AI Blog Generator — dark mode */
+html[data-admin-theme="dark"] .card {
+    background: #1e1e2e !important;
+    color: #e0e0e0 !important;
+    border-color: #2e2e3e !important;
+}
+html[data-admin-theme="dark"] .card-header.bg-white {
+    background: #1e1e2e !important;
+    color: #e0e0e0 !important;
+}
+html[data-admin-theme="dark"] .card h1,
+html[data-admin-theme="dark"] .card h5,
+html[data-admin-theme="dark"] .card h6,
+html[data-admin-theme="dark"] .card .fw-bold,
+html[data-admin-theme="dark"] .card .fw-semibold {
+    color: #ffffff !important;
+}
+html[data-admin-theme="dark"] .card .text-muted {
+    color: #a0a0b0 !important;
+}
+html[data-admin-theme="dark"] .table {
+    color: #e0e0e0 !important;
+    border-color: #2e2e3e !important;
+}
+html[data-admin-theme="dark"] .table-light,
+html[data-admin-theme="dark"] thead.table-light tr {
+    background-color: #2a2a3e !important;
+    color: #c0c0d0 !important;
+}
+html[data-admin-theme="dark"] .table-hover tbody tr:hover {
+    background-color: #252535 !important;
+}
+html[data-admin-theme="dark"] .table td,
+html[data-admin-theme="dark"] .table th {
+    border-color: #2e2e3e !important;
+    color: #e0e0e0 !important;
+}
+html[data-admin-theme="dark"] h1.h3,
+html[data-admin-theme="dark"] .container-fluid > .d-flex .fw-bold {
+    color: #ffffff !important;
+}
+html[data-admin-theme="dark"] .container-fluid .text-muted {
+    color: #a0a0b0 !important;
+}

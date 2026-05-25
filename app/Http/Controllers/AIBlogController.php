@@ -28,8 +28,10 @@ class AIBlogController extends Controller
     {
         $categoryId = $request->filled('category_id') ? (int) $request->category_id : null;
 
-        GenerateAIBlogPostJob::dispatch($categoryId);
+        // dispatchAfterResponse sends the HTTP response first, then runs the job.
+        // This prevents 504 timeouts even when QUEUE_CONNECTION=sync.
+        GenerateAIBlogPostJob::dispatchAfterResponse($categoryId);
 
-        return back()->with('success', 'AI article generation started. It will appear in the log below once complete (usually 30–60 seconds).');
+        return back()->with('success', 'AI article generation started. Refresh this page in 60–90 seconds to see the result.');
     }
 }
